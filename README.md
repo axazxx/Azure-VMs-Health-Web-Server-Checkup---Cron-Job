@@ -4,11 +4,11 @@ A small Bash script that automatically checks whether my Azure VMs are running, 
 
 ## Description
 
-I have 5 VMs running on Azure — 3 Windows VMs running IIS, and 2 Linux VMs running Nginx. Instead of manually logging into the Azure Portal every time to check their status, I can use this script which automatically checks and writes the results to a log file, so I or anyone monitoring the infra/environment can just check the log file to know the current state of everything. This Cron Job can also be scheduled to check in intervals.
+I have 5 VMs running on Azure — 3 Windows VMs running IIS, and 2 Linux VMs running Nginx. Instead of manually logging into the Azure Portal every time to check their status, I can use this script which automatically checks and writes the results to a log file, so I or anyone monitoring the infra/environment can just check the log file to know the current state of environment. This Cron Job can also be scheduled to check in intervals.
 
 ## What it actually checks
 
-For every VM, in order:
+For every VM, it performs:
 1. **Is the VM on/running** (via `az vm get-instance-view`)
 2. **If it's on, is the web server actually running inside it**
    - Windows VMs → checks the `W3SVC` service (IIS internal service name)
